@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: courthero-db
+
+    environment:
+      POSTGRES_DB: courthero
+      POSTGRES_USER: courthero
+      POSTGRES_PASSWORD: courthero
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - courthero_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  courthero_data:

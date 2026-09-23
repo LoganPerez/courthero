@@ -91,3 +91,16 @@ body {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.location-result {
+  margin-top: 20px;
+}
+
+.location-result p {
+  margin: 5px 0;
+}
+
+.error {
+  margin-top: 20px;
+  color: crimson;
+}
