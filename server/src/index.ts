@@ -5,10 +5,21 @@ import pool from "./db.js";
 
 dotenv.config();
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT ?? 3001;
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? "*";
 
-app.use(cors());
+app.use(cors({ origin: ALLOWED_ORIGIN }));
 app.use(express.json());
+
+// ── Types ───────────────────────────────────────────────────
+
+type MapboxGeocodeResponse = {
+  features: Array<{
+    geometry: { coordinates: [number, number] };
+    properties: { full_address?: string; name?: string };
+  }>;
+};
+
 
 app.get("/", (req, res) => {
   res.send("CourtHero API is running");
@@ -130,7 +141,7 @@ app.post("/api/events", async (req, res) => {
     }
 
     const geocodeData =
-      await geocodeResponse.json();
+      await geocodeResponse.json() as MapboxGeocodeResponse;
 
     if (
       !geocodeData.features ||
@@ -245,7 +256,7 @@ app.get("/api/geocode", async (req, res) => {
       throw new Error("Mapbox request failed");
     }
 
-    const data = await response.json();
+    const data = await response.json() as MapboxGeocodeResponse;
 
     if (!data.features || data.features.length === 0) {
       return res.status(404).json({

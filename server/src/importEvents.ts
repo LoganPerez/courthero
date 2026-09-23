@@ -5,6 +5,13 @@ import pool from "./db.js";
 
 dotenv.config();
 
+type MapboxGeocodeResponse = {
+  features: Array<{
+    geometry: { coordinates: [number, number] };
+    properties: { full_address?: string; name?: string };
+  }>;
+};
+
 type CsvEvent = {
   source_event_id: string;
   name: string;
@@ -37,7 +44,7 @@ async function geocodeAddress(address: string) {
     throw new Error(`Geocoding failed for ${address}`);
   }
 
-  const data = await response.json();
+  const data = await response.json() as MapboxGeocodeResponse;
 
   if (!data.features || data.features.length === 0) {
     throw new Error(`No coordinates found for ${address}`);

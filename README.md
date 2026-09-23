@@ -1,150 +1,94 @@
 # CourtHero
 
-CourtHero is a full-stack web application for discovering pickleball events near a user-defined location.
+CourtHero is a full-stack web app for discovering pickleball events near a user-defined location. Enter a city or ZIP code, choose a search radius, and find nearby tournaments and open-play sessions — ordered by real geographic distance.
 
-Users can enter a city or ZIP code, choose a search radius, and find nearby tournaments, open plays, leagues, and clinics. CourtHero uses geocoding and spatial database queries to return events ordered by geographic distance.
+🏓 **Live demo:** _coming soon_
+
+---
 
 ## Features
 
-- Search for pickleball events by city or ZIP code
-- Configurable search radius
-- Geocoding through the Mapbox API
-- Spatial event filtering with PostgreSQL and PostGIS
-- Distance-based sorting of nearby events
-- Event ingestion through CSV imports
-- Event submission API with automatic venue geocoding
-- Dockerized PostgreSQL/PostGIS database
+- Location search by city name or ZIP code
+- Configurable radius (5 – 100 miles)
+- Event types: Tournament and Open Play
+- Real geospatial queries via PostGIS (`ST_DWithin`, `ST_Distance`)
+- Geocoding via the Mapbox API
+- CSV event import pipeline
+- Event submission API (with auto-geocoding)
+- `/about` landing page with tech stack and how-it-works explainer
+
+---
 
 ## Tech Stack
 
-### Frontend
-- React
-- TypeScript
-- Vite
-- CSS
+| Layer | Tools |
+|---|---|
+| Frontend | React, TypeScript, Vite |
+| Backend | Node.js, Express, TypeScript |
+| Database | PostgreSQL + PostGIS |
+| Geocoding | Mapbox Geocoding API |
+| Hosting | Vercel (frontend), Render (API), Supabase (database) |
 
-### Backend
-- Node.js
-- Express
-- TypeScript
-
-### Database
-- PostgreSQL
-- PostGIS
-
-### Tools and Services
-- Docker
-- Mapbox Geocoding API
-- Git / GitHub
+---
 
 ## Architecture
 
-```text
+```
 User
-  |
-  v
-React Frontend
-  |
-  | REST API
-  v
-Express Backend
-  |
-  +--------------------+
-  |                    |
-  v                    v
-Mapbox API         PostgreSQL
-Geocoding            + PostGIS
-                        |
-                        v
-                Spatial Event Search
-```
-## How It Works
-
-When a user searches for a location:
-
-1. The React frontend sends the location to the Express backend.
-2. The backend sends the location to the Mapbox Geocoding API.
-3. Mapbox returns latitude and longitude coordinates.
-4. The frontend requests events within the selected radius.
-5. The backend queries PostgreSQL using PostGIS spatial functions.
-6. Matching events are returned ordered by distance.
-7. React displays the nearby events.
-
-CourtHero uses PostGIS functions such as `ST_DWithin` and `ST_Distance` to perform geographic filtering.
-
-## Event Ingestion
-
-CourtHero supports importing event data from CSV files.
-
-```text
-Event Data
-    |
-    v
-CSV Importer
-    |
-    v
-Address Geocoding
-    |
-    v
-Normalize Event Data
-    |
-    v
-PostgreSQL / PostGIS
+  │
+  ▼
+React Frontend (Vercel)
+  │
+  │  REST API
+  ▼
+Express Backend (Render)
+  │
+  ├─────────────────────┐
+  │                     │
+  ▼                     ▼
+Mapbox API         PostgreSQL + PostGIS (Supabase)
+Geocoding          Spatial Event Search
 ```
 
-Imported event addresses are automatically geocoded before being stored in the database.
-
-The database also stores source identifiers to help prevent duplicate event records.
-
-## Event Submission API
-
-CourtHero supports creating new events through the backend API.
-
-```http
-POST /api/events
-```
-
-The backend validates the submitted information, geocodes the event address, and stores the resulting geographic coordinates in PostGIS.
+---
 
 ## Local Development
 
 ### Prerequisites
 
-- Node.js
-- npm
-- Docker
-- Docker Compose
-- Mapbox access token
+- Node.js v20+
+- Docker + Docker Compose
+- A [Mapbox access token](https://account.mapbox.com/)
 
-### Clone
+### 1 — Clone the repo
 
 ```bash
 git clone https://github.com/LoganPerez/courthero.git
 cd courthero
 ```
 
-### Environment Variables
+### 2 — Set up environment variables
 
-Create:
-
-```text
-server/.env
+```bash
+cp server/.env.example server/.env
 ```
 
-Add:
+Edit `server/.env` and fill in your Mapbox token:
 
 ```env
-MAPBOX_ACCESS_TOKEN=your_mapbox_token
+MAPBOX_ACCESS_TOKEN=your_mapbox_token_here
 DATABASE_URL=postgresql://courthero:courthero@localhost:5432/courthero
 ```
 
-### Start the Database
+### 3 — Start the database
 
 ```bash
 docker compose up -d
 ```
 
-### Start the Backend
+This starts a PostGIS-enabled PostgreSQL container and runs `database/init.sql` automatically.
+
+### 4 — Start the backend
 
 ```bash
 cd server
@@ -152,15 +96,11 @@ npm install
 npm run dev
 ```
 
-Backend:
+API runs at: `http://localhost:3001`
 
-```text
-http://localhost:3001
-```
+### 5 — Start the frontend
 
-### Start the Frontend
-
-In another terminal:
+In a separate terminal:
 
 ```bash
 cd client
@@ -168,52 +108,84 @@ npm install
 npm run dev
 ```
 
-Frontend:
+Frontend runs at: `http://localhost:5173`
 
-```text
-http://localhost:5173
-```
+---
 
-## Example API Requests
+## Deployment Guide (Free Tier)
 
-### Geocode a Location
+### Step 1 — Supabase (Database)
+
+1. Create a free account at [supabase.com](https://supabase.com)
+2. Create a new project
+3. In the **SQL Editor**, paste and run the contents of `database/init.sql`
+4. Go to **Project Settings → Database** and copy the **Connection string (URI)**
+
+### Step 2 — Render (Backend API)
+
+1. Create a free account at [render.com](https://render.com)
+2. Click **New → Blueprint** and connect your GitHub repo
+   - Render will detect `render.yaml` automatically
+3. In the **Environment** section of your new service, add these variables:
+   - `DATABASE_URL` → paste the Supabase connection string
+   - `MAPBOX_ACCESS_TOKEN` → your Mapbox token
+   - `ALLOWED_ORIGIN` → your Vercel URL (add this after Step 3, then redeploy)
+4. Deploy — your API URL will be `https://courthero-api.onrender.com` (or similar)
+
+> **Note:** Render's free tier spins down after 15 minutes of inactivity. The first request after idle takes ~20–30 seconds to warm up. This is normal.
+
+### Step 3 — Vercel (Frontend)
+
+1. Create a free account at [vercel.com](https://vercel.com) (or log in)
+2. Click **Add New → Project** and import your GitHub repo
+3. Set the **Root Directory** to `client`
+4. Under **Environment Variables**, add:
+   - `VITE_API_URL` → your Render API URL (e.g. `https://courthero-api.onrender.com`)
+5. Deploy
+
+### Step 4 — Wire CORS
+
+1. Go back to your Render service → **Environment**
+2. Set `ALLOWED_ORIGIN` to your Vercel URL (e.g. `https://courthero.vercel.app`)
+3. Trigger a redeploy on Render
+
+---
+
+## API Reference
+
+### Geocode a location
 
 ```http
 GET /api/geocode?location=St.%20Louis
 ```
 
-### Find Nearby Events
+### Find nearby events
 
 ```http
-GET /api/events?latitude=38.627464&longitude=-90.19835&radius=25
+GET /api/events?latitude=38.627&longitude=-90.198&radius=25
 ```
 
-### Submit an Event
+### Submit an event
 
 ```http
 POST /api/events
+Content-Type: application/json
+
+{
+  "name": "My Pickleball Tournament",
+  "venue": "City Courts",
+  "address": "123 Main St",
+  "city": "St. Louis",
+  "state": "MO",
+  "startDate": "2026-11-01",
+  "type": "Tournament"
+}
 ```
 
-## Current Features
-
-- Location geocoding
-- Configurable radius search
-- PostgreSQL/PostGIS spatial queries
-- Distance calculations
-- CSV event ingestion
-- Event submission API
-- Dockerized database
-
-## Planned Improvements
-
-- Interactive event map
-- Event submission interface
-- Admin approval workflow
-- User accounts and saved events
-- Automated ingestion from approved event sources
-- Cloud deployment
+---
 
 ## Author
 
 **Logan Perez**  
-Computer Science — Washington University in St. Louis
+Computer Science — Washington University in St. Louis  
+[github.com/LoganPerez](https://github.com/LoganPerez)
