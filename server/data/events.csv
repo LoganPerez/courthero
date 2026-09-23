@@ -1,0 +1,3 @@
+source_event_id,name,venue,address,city,state,start_date,end_date,type,registration_url,source
+test-columbus-2026,Columbus Pickleball Open,Pickle & Chill,880 W Henderson Rd,Columbus,OH,2026-10-01,2026-10-04,Tournament,https://example.com,Manual Import
+test-bozeman-2026,Bozeman Fall Open,The Picklr Bozeman,85 Mill Town Loop,Bozeman,MT,2026-10-09,2026-10-11,Tournament,https://example.com,Manual Import
