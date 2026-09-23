@@ -2,20 +2,18 @@
 
 CourtHero is a full-stack web app for discovering pickleball events near a user-defined location. Enter a city or ZIP code, choose a search radius, and find nearby tournaments and open-play sessions — ordered by real geographic distance.
 
-🏓 **Live demo:** _coming soon_
+🏓 **Live Demo:** [courthero-wheat.vercel.app](https://courthero-wheat.vercel.app)
 
 ---
 
 ## Features
 
-- Location search by city name or ZIP code
-- Configurable radius (5 – 100 miles)
-- Event types: Tournament and Open Play
-- Real geospatial queries via PostGIS (`ST_DWithin`, `ST_Distance`)
-- Geocoding via the Mapbox API
-- CSV event import pipeline
-- Event submission API (with auto-geocoding)
-- `/about` landing page with tech stack and how-it-works explainer
+- **Geospatial Proximity Search**: Query events within a dynamic radius (5–100 miles) using PostGIS spatial indexing (`ST_DWithin`, `ST_Distance`).
+- **Interactive Event Submission (`/submit`)**: Full-stack event submission form with real-time address validation and Mapbox geocoding.
+- **Dynamic Geocoding**: Converts natural language city names or ZIP codes into precise WGS84 geographic coordinates.
+- **Diverse Event Types**: Discover Tournaments, Open Play sessions, Leagues, and Clinics with venue details and direct registration links.
+- **CSV Ingestion Pipeline**: Ingest and deduplicate bulk event records using UPSERT logic (`ON CONFLICT`).
+- **Landing & Tech Breakdown (`/about`)**: Architectural overview and interactive project documentation.
 
 ---
 

@@ -252,6 +252,32 @@
   margin: 8px 0;
 }
 
+.event-venue {
+  font-weight: 600;
+  color: #1b4b32;
+}
+
+.event-link-btn {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  padding: 10px 14px;
+  background: #f0f7f3;
+  color: #236944;
+  border: 1px solid #c9e0d2;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.event-link-btn:hover {
+  background: #236944;
+  color: white;
+  border-color: #236944;
+}
+
 .empty-state {
   padding: 70px 20px;
 

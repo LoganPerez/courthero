@@ -7,10 +7,13 @@ const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
 type Event = {
   id: number;
   name: string;
+  venue?: string;
   city: string;
   state: string;
   date: string;
+  end_date?: string;
   type: string;
+  registration_url?: string;
   distance: string;
 };
 
@@ -191,9 +194,24 @@ function Home() {
               <h3>{event.name}</h3>
 
               <div className="event-details">
+                {event.venue && <p className="event-venue">🏟️ {event.venue}</p>}
                 <p>📍 {event.city}, {event.state}</p>
-                <p>📅 {formatDate(event.date)}</p>
+                <p>
+                  📅 {formatDate(event.date)}
+                  {event.end_date ? ` – ${formatDate(event.end_date)}` : ""}
+                </p>
               </div>
+
+              {event.registration_url && (
+                <a
+                  href={event.registration_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="event-link-btn"
+                >
+                  Event Info & Registration ↗
+                </a>
+              )}
             </article>
           ))}
         </div>

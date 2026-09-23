@@ -48,10 +48,13 @@ app.get("/api/events", async (req, res) => {
       SELECT
         id,
         name,
+        venue,
         city,
         state,
         event_date AS date,
+        end_date,
         event_type AS type,
+        registration_url,
         ROUND(
           (
             ST_Distance(

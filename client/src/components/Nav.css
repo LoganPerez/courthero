@@ -61,3 +61,21 @@
   background: rgba(255, 189, 63, 0.2);
   color: #ffbd3f;
 }
+
+.nav-link-cta {
+  background: #ffbd3f;
+  color: #18231d !important;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 14px;
+}
+
+.nav-link-cta:hover {
+  background: #ffc95f !important;
+  color: #18231d !important;
+}
+
+.nav-link-cta.active {
+  background: #ffc95f;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}

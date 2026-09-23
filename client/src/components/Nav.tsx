@@ -24,6 +24,12 @@ function Nav() {
         >
           About
         </Link>
+        <Link
+          to="/submit"
+          className={`nav-link nav-link-cta ${pathname === "/submit" ? "active" : ""}`}
+        >
+          + Add Event
+        </Link>
       </div>
     </nav>
   );

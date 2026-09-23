@@ -1,3 +1,17 @@
 source_event_id,name,venue,address,city,state,start_date,end_date,type,registration_url,source
-test-columbus-2026,Columbus Pickleball Open,Pickle & Chill,880 W Henderson Rd,Columbus,OH,2026-10-01,2026-10-04,Tournament,https://example.com,Manual Import
-test-bozeman-2026,Bozeman Fall Open,The Picklr Bozeman,85 Mill Town Loop,Bozeman,MT,2026-10-09,2026-10-11,Tournament,https://example.com,Manual Import
+seed-stl-001,Gateway City Fall Pickleball Classic,Dwight Davis Tennis & Pickleball Center,5620 Grand Dr,St. Louis,MO,2026-10-10,2026-10-12,Tournament,https://courthero.app/events/gateway-classic-2026,Curated Seed
+seed-stl-002,Chicken N Pickle St. Charles Friday Mixer,Chicken N Pickle - St. Charles,1500 S Main St,St. Charles,MO,2026-10-16,,Open Play,https://chickennpickle.com/st-charles,Curated Seed
+seed-stl-003,WashU Collegiate Invitational,Tao Tennis & Pickleball Center,6501 Forsyth Blvd,St. Louis,MO,2026-10-24,2026-10-25,Tournament,https://courthero.app/events/washu-invite-2026,Curated Seed
+seed-stl-004,Chesterfield Athletic Club Open Doubles,Chesterfield Athletic Club,16625 Swingley Ridge Rd,Chesterfield,MO,2026-10-31,2026-11-01,Tournament,https://courthero.app/events/chesterfield-open-2026,Curated Seed
+seed-stl-005,Tower Grove Park Sunrise Open Play,Tower Grove Park Courts,4257 Northeast Dr,St. Louis,MO,2026-10-18,,Open Play,https://courthero.app/events/tower-grove-open-play,Curated Seed
+seed-stl-006,Vetta Sports Concord Fall League,Vetta Sports - Concord,123 Concord School Rd,St. Louis,MO,2026-11-05,2026-12-17,League,https://vettasports.com/pickleball,Curated Seed
+seed-kc-001,Missouri State Championship,North Kansas City Chicken N Pickle,1761 Burlington St,North Kansas City,MO,2026-11-13,2026-11-15,Tournament,https://courthero.app/events/mo-state-2026,Curated Seed
+seed-chi-001,Windy City Indoor Open,SPF Chicago (Social Pickleball Fun),2121 N Clybourn Ave,Chicago,IL,2026-11-06,2026-11-08,Tournament,https://playspf.com,Curated Seed
+seed-atx-001,Austin Bat City Championship,Bouldin Acres,2027 S Lamar Blvd,Austin,TX,2026-11-07,2026-11-08,Tournament,https://bouldinacres.com,Curated Seed
+seed-dfw-001,Dallas Metroplex Classic,The Picklr Fort Worth,8901 Tehama Ridge Pkwy,Fort Worth,TX,2026-11-20,2026-11-22,Tournament,https://thepicklr.com,Curated Seed
+seed-den-001,Rocky Mountain Grand Open,Apex Pickleball Courts,11706 W 82nd Ave,Arvada,CO,2026-10-23,2026-10-25,Tournament,https://apexprd.org,Curated Seed
+seed-phx-001,Desert Classic Pickleball Championship,Legacy Sports USA / Bell Bank Park,1 Legacy Dr,Mesa,AZ,2026-11-19,2026-11-22,Tournament,https://courthero.app/events/desert-classic-2026,Curated Seed
+seed-sd-001,San Diego Coastal Masters,Barnes Tennis & Pickleball Center,4490 W Point Loma Blvd,San Diego,CA,2026-11-05,2026-11-08,Tournament,https://thebarnes.org,Curated Seed
+seed-fl-001,Naples World Pickleball Fall Invitational,East Naples Community Park,3500 Thomasson Dr,Naples,FL,2026-11-11,2026-11-15,Tournament,https://usopensqaure.com,Curated Seed
+seed-nyc-001,Big Apple City Championship,CityPickle Wollman Rink,830 5th Ave (Central Park),New York,NY,2026-10-16,2026-10-18,Tournament,https://city-pickle.com,Curated Seed
+seed-sea-001,Emerald City Pickleball Open,Green Lake Park Courts,7201 E Green Lake Dr N,Seattle,WA,2026-10-24,2026-10-25,Tournament,https://seattle.gov/parks,Curated Seed
