@@ -1,0 +1,45 @@
+name: Sync Pickleball Events
+
+on:
+  # Run every Sunday at 9:00 AM UTC
+  schedule:
+    - cron: "0 9 * * 0"
+
+  # Run any time the event manifest is updated and pushed to main
+  push:
+    branches:
+      - main
+    paths:
+      - "server/data/upcoming-events.json"
+
+  # Allow manually triggering from the GitHub Actions UI at any time
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Geocode & Upsert Events to Supabase
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install dependencies
+        run: npm install --include=dev
+
+      - name: Run event sync
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
+        run: npm run sync

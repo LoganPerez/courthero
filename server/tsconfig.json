@@ -20,5 +20,5 @@
     "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["src/importEvents.ts"]
+  "exclude": ["src/importEvents.ts", "src/syncEvents.ts"]
 }

@@ -1,0 +1,107 @@
+[
+  {
+    "source_event_id": "sync-stl-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Gateway City Spring Pickleball Open",
+    "venue": "Dwight Davis Tennis & Pickleball Center",
+    "address": "5620 Grand Dr, St. Louis, MO"
+  },
+  {
+    "source_event_id": "sync-stl-2027-002",
+    "source": "CourtHero Auto-Sync",
+    "name": "Chicken N Pickle STL Spring Mixer",
+    "venue": "Chicken N Pickle - St. Charles",
+    "address": "1500 S Main St, St. Charles, MO"
+  },
+  {
+    "source_event_id": "sync-stl-2027-003",
+    "source": "CourtHero Auto-Sync",
+    "name": "Forest Park Spring Open Play",
+    "venue": "Forest Park Tennis & Pickleball Courts",
+    "address": "5593 Grand Dr, St. Louis, MO"
+  },
+  {
+    "source_event_id": "sync-stl-2027-004",
+    "source": "CourtHero Auto-Sync",
+    "name": "Vetta Sports Concord Spring League",
+    "venue": "Vetta Sports - Concord",
+    "address": "123 Concord School Rd, St. Louis, MO"
+  },
+  {
+    "source_event_id": "sync-kc-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Kansas City Spring Showdown",
+    "venue": "Chicken N Pickle - North Kansas City",
+    "address": "1761 Burlington St, North Kansas City, MO"
+  },
+  {
+    "source_event_id": "sync-chi-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Windy City Spring Indoor Open",
+    "venue": "SPF Chicago",
+    "address": "2121 N Clybourn Ave, Chicago, IL"
+  },
+  {
+    "source_event_id": "sync-atx-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Austin Bat City Spring Championship",
+    "venue": "Bouldin Acres",
+    "address": "2027 S Lamar Blvd, Austin, TX"
+  },
+  {
+    "source_event_id": "sync-dfw-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "DFW Spring Classic",
+    "venue": "The Picklr Fort Worth",
+    "address": "8901 Tehama Ridge Pkwy, Fort Worth, TX"
+  },
+  {
+    "source_event_id": "sync-den-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Rocky Mountain Spring Open",
+    "venue": "Apex Pickleball Courts",
+    "address": "11706 W 82nd Ave, Arvada, CO"
+  },
+  {
+    "source_event_id": "sync-phx-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Desert Spring Championship",
+    "venue": "Legacy Sports USA",
+    "address": "1 Legacy Dr, Mesa, AZ"
+  },
+  {
+    "source_event_id": "sync-sd-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "San Diego Spring Coastal Open",
+    "venue": "Barnes Tennis & Pickleball Center",
+    "address": "4490 W Point Loma Blvd, San Diego, CA"
+  },
+  {
+    "source_event_id": "sync-nyc-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Big Apple Spring Invitational",
+    "venue": "CityPickle Central Park",
+    "address": "830 5th Ave, New York, NY"
+  },
+  {
+    "source_event_id": "sync-sea-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Emerald City Spring Open",
+    "venue": "Green Lake Park Courts",
+    "address": "7201 E Green Lake Dr N, Seattle, WA"
+  },
+  {
+    "source_event_id": "sync-atl-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Atlanta Peach Tree Spring Classic",
+    "venue": "Bitsy Grant Tennis & Pickleball Center",
+    "address": "2125 Northside Dr NW, Atlanta, GA"
+  },
+  {
+    "source_event_id": "sync-fl-2027-001",
+    "source": "CourtHero Auto-Sync",
+    "name": "Florida Sunshine Spring Invitational",
+    "venue": "East Naples Community Park",
+    "address": "3500 Thomasson Dr, Naples, FL"
+  }
+]
