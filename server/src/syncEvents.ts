@@ -27,6 +27,10 @@ type EventManifestEntry = {
   name: string;
   venue: string;
   address: string; // Full address: "123 Main St, City, ST"
+  start_date: string;
+  end_date: string | null;
+  event_type: string;
+  registration_url: string | null;
 };
 
 type MapboxGeocodeResponse = {
@@ -118,25 +122,31 @@ async function syncEvents() {
           address,
           city,
           state,
+          event_date,
+          end_date,
           event_type,
+          registration_url,
           location,
           source,
           source_event_id
         )
         VALUES (
-          $1, $2, $3, $4, $5,
-          'Tournament',
-          ST_SetSRID(ST_MakePoint($6, $7), 4326)::geography,
-          $8, $9
+          $1, $2, $3, $4, $5, $6, $7, $8, $9,
+          ST_SetSRID(ST_MakePoint($10, $11), 4326)::geography,
+          $12, $13
         )
         ON CONFLICT (source, source_event_id)
         DO UPDATE SET
-          name     = EXCLUDED.name,
-          venue    = EXCLUDED.venue,
-          address  = EXCLUDED.address,
-          city     = EXCLUDED.city,
-          state    = EXCLUDED.state,
-          location = EXCLUDED.location;
+          name             = EXCLUDED.name,
+          venue            = EXCLUDED.venue,
+          address          = EXCLUDED.address,
+          city             = EXCLUDED.city,
+          state            = EXCLUDED.state,
+          event_date       = EXCLUDED.event_date,
+          end_date         = EXCLUDED.end_date,
+          event_type       = EXCLUDED.event_type,
+          registration_url = EXCLUDED.registration_url,
+          location         = EXCLUDED.location;
         `,
         [
           event.name,
@@ -144,6 +154,10 @@ async function syncEvents() {
           street,
           city,
           state,
+          event.start_date,
+          event.end_date,
+          event.event_type,
+          event.registration_url,
           longitude,
           latitude,
           event.source,
